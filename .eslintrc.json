@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/jsx-runtime",
+    // Always keep prettier rules last
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "plugins": ["testing-library"],
+      "files": [
+        "src/**/__tests__/**/*.[jt]s?(x)",
+        "src/**/?(*.)+(test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:jest-dom/recommended", "plugin:testing-library/react"]
+    }
+  ],
+  "rules": {
+    "no-duplicate-imports": "off",
+    "@typescript-eslint/no-duplicate-imports": "error",
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-unused-vars": "off",
+    "no-debugger": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
+}

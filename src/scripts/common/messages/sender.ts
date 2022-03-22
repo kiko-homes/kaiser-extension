@@ -1,0 +1,4 @@
+export enum Sender {
+  MAIN_EXTENSION = 'MAIN_EXTENSION',
+  CAPTURER_SCRIPT = 'CAPTURER_SCRIPT',
+}
