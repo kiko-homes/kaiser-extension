@@ -13,6 +13,7 @@ export interface SubscribeToData {
 
 export interface SaveHtml {
   type: MessageType.SAVE_HTML;
-  projectId: string;
+  projectId?: string;
+  title: string;
   html: string;
 }

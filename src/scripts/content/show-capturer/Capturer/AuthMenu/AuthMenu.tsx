@@ -4,5 +4,5 @@ import { useTranslation } from 'react-i18next';
 export const AuthMenu = () => {
   const { t } = useTranslation();
 
-  return <LinkToApp href='/'>{t('login')}</LinkToApp>;
+  return <LinkToApp href='/authenticate-extension'>{t('login')}</LinkToApp>;
 };

@@ -38,8 +38,9 @@
   "background": {
     "service_worker": "lib/main.js"
   },
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "activeTab"],
+  "host_permissions": ["<all_urls>"],
   "externally_connectable": {
-    "matches": ["*://kaiser-dev.web.app/*", "*://localhost/*"]
+    "matches": ["*://kaiser-dev.web.app/*", "*://localhost/*", "*://0.0.0.0/*"]
   }
 }

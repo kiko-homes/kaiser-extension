@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '../../../../../components/uikit';
+import { Button } from 'components/uikit';
 
 interface SavingButtonProps extends ComponentProps<typeof Button> {}
 

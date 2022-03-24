@@ -10,6 +10,7 @@ const createContainer = () => {
   container.style.position = 'fixed';
   container.style.bottom = '16px';
   container.style.left = '16px';
+  container.style.zIndex = '9999';
 
   document.body.appendChild(container);
 

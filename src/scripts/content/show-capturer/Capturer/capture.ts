@@ -1,7 +1,7 @@
 import { getPageData } from 'single-file/src/single-file';
 
-export const capturePage = async (): Promise<string> => {
-  const { content } = await getPageData({
+export const capturePage = async () => {
+  const { content, title } = await getPageData({
     removeHiddenElements: true,
     removeUnusedStyles: true,
     removeUnusedFonts: true,
@@ -16,5 +16,5 @@ export const capturePage = async (): Promise<string> => {
     groupDuplicateImages: true,
   });
 
-  return content;
+  return { content, title };
 };

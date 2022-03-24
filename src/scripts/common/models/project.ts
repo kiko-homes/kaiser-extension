@@ -1,5 +1,11 @@
 export interface Project {
   uid: string;
   name: string;
-  screensCount: number;
+  slidesCount: number;
+}
+
+export interface ProjectFull {
+  name: string;
+  organisationUid: string;
+  thumbnail: string;
 }

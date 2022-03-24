@@ -1,10 +1,11 @@
 import { MessageType, Sender } from 'scripts/common/messages';
 
-export const saveHtml = (projectId: string, html: string) => {
+export const saveHtml = (html: string, title: string, projectId?: string) => {
   chrome.runtime.sendMessage({
-    sender: Sender.CAPTURER_SCRIPT,
+    from: Sender.CAPTURER_SCRIPT,
     type: MessageType.SAVE_HTML,
     projectId,
+    title,
     html,
   });
 };
