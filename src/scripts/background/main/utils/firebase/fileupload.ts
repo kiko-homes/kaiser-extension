@@ -1,6 +1,5 @@
 import './xhrPolyfill';
 import {
-  getDownloadURL,
   getStorage,
   ref,
   uploadBytes,
@@ -19,7 +18,7 @@ export const uploadTextFile = async (
 
   await uploadString(fileRef, file, 'raw', metadata);
 
-  return await getDownloadURL(fileRef);
+  return path;
 };
 
 export const uploadBlobFile = async (
@@ -31,5 +30,5 @@ export const uploadBlobFile = async (
 
   await uploadBytes(fileRef, file, metadata);
 
-  return await getDownloadURL(fileRef);
+  return path;
 };

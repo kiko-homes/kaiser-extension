@@ -17,9 +17,14 @@ const projects = create<{
   },
 }));
 
-const { setState } = projects;
+const { setState, getState } = projects;
 
 export const setProjects = (projects: Project[]) =>
-  setState({ projects, selectedProject: projects[0] });
+  setState({
+    projects,
+    selectedProject:
+      projects.find(({ uid }) => uid === getState().selectedProject?.uid) ??
+      projects[0],
+  });
 
 export const useProjects = createHook(projects);
