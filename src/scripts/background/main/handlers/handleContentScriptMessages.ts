@@ -13,7 +13,7 @@ const validateSender = (message: ChromeMessage) => {
   return message.from === Sender.CAPTURER_SCRIPT;
 };
 
-export const handleContentScriptMessages = async (
+export const handleContentScriptMessages = (
   message: ChromeMessage,
   sender: chrome.runtime.MessageSender,
   respond: Respond,
@@ -26,7 +26,7 @@ export const handleContentScriptMessages = async (
     respond('OK');
   }
   if (message.type === MessageType.SAVE_HTML) {
-    await saveHtml(message);
-    respond('OK');
+    saveHtml(message).then(() => respond('OK'));
+    return true;
   }
 };

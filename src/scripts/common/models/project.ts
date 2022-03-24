@@ -8,4 +8,5 @@ export interface ProjectFull {
   name: string;
   organisationUid: string;
   thumbnail: string;
+  slidesCount: number;
 }

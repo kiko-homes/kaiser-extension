@@ -1,4 +1,4 @@
-export const createScreenshot = async () => {
+export const createScreenThumbnail = async () => {
   const originalSizeScreenshot = await captureScreen();
   const resizedScreenshot = await resizeImage(originalSizeScreenshot);
 
