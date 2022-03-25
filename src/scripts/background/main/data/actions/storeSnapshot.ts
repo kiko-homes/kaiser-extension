@@ -21,7 +21,7 @@ export const storeSnapshot = async (
   );
 
   const snapshotPath = `${organisationUid}/${snapshot.id}/page-v-1.html`;
-  const thumbnailPath = `${organisationUid}/${snapshot.id}/thumbnail-v-1.html`;
+  const thumbnailPath = `${organisationUid}/${snapshot.id}/thumbnail-v-1.jpeg`;
 
   const snapshotUrl = await uploadTextFile(snapshotPath, request.html, {
     contentType: 'text/html',
