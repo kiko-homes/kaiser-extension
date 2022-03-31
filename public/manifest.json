@@ -2,6 +2,7 @@
   "name": "Kaiser website recorder",
   "version": "1.0.0",
   "manifest_version": 3,
+  "key": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDEw/5RuX1VPp0K9EOq+Kvuo/2K53o0QQNqc1lyFKhuJEm6uIlzQMsCsgGbsJx0O06hk7BfYiaYZOfKVPq06Y2/H5DE/FOsL+KQky7Y3I84vRPoo8sOxrsMcVNxvuWyGWpTUrerYV+KrHSUsF2d2yPC8UFZ3pL9uODiGhrhXoUSChRo0nPqIgUm4Qo3jwzy/F5jRnDfj3yi3WnO23649ve0qBHcFIXchkjBMW/BuLZcQ+qRxg8K8zrDqyLhgucGJGlrRDk9Ul+YrIvIjRvCB9TETjYnm5ZFVcg5RSSYjCo06+8ikzKutFmQ6uT/WNKqLygJzwDtX0JqGp1KQA+iJi4J",
   "description": "Capture your website to create stunning live demos",
   "homepage_url": "https://kaiser-dev.web.app",
   "icons": {
