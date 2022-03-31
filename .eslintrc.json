@@ -30,6 +30,7 @@
         "ignoreRestSiblings": true,
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "@typescript-eslint/ban-types": "off"
   }
 }

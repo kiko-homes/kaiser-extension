@@ -36,6 +36,14 @@ export const storeSnapshot = async (
   const updateUrlsData = {
     html: snapshotUrl,
     thumbnail: thumbnailUrl,
+    version: 0,
+    versions: [
+      {
+        version: 0,
+        html: snapshotUrl,
+        thumbnail: thumbnailUrl,
+      },
+    ],
   };
   await updateDoc(doc(db, 'snapshots', snapshot.id), updateUrlsData);
 

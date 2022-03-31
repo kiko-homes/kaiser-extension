@@ -12,6 +12,7 @@ declare module 'single-file/src/single-file' {
     removeAlternativeMedias?: boolean;
     removeAlternativeImages?: boolean;
     groupDuplicateImages?: boolean;
+    loadDeferredImages?: boolean;
   }
 
   interface PageData {

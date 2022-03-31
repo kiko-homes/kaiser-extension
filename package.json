@@ -24,7 +24,7 @@
     "react-i18next": "^11.16.1",
     "react-scripts": "5.0.0",
     "react-shadow": "^19.0.2",
-    "single-file": "git+https://github.com/gildas-lormeau/SingleFile.git",
+    "single-file": "git+https://github.com/gildas-lormeau/SingleFile-Lite.git",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4",
     "zustand": "^3.7.1"

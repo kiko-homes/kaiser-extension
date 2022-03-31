@@ -13,6 +13,7 @@ export const useCaptureMenu = () => {
     setSaving(true);
 
     const { content, title } = await capturePage();
+    debugger;
     saveHtml(content, title, selectedProject?.uid);
 
     setSaving(false);
