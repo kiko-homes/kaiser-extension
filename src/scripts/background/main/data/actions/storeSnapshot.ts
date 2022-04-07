@@ -1,4 +1,10 @@
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  Timestamp,
+  updateDoc,
+} from 'firebase/firestore';
 import { SaveHtml } from 'scripts/common/messages/contentToBackgroundMessages';
 import { Snapshot } from 'scripts/common/models/snapshot';
 import { db, uploadBlobFile, uploadTextFile } from '../../utils/firebase';
@@ -14,6 +20,8 @@ export const storeSnapshot = async (
   const createSnapshotData = {
     organisationUid,
     name: request.title,
+    insertedAt: Timestamp.now(),
+    updatedAt: Timestamp.now(),
   };
   const snapshot = await addDoc(
     collection(db, 'snapshots'),

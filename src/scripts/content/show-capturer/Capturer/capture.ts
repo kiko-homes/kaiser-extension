@@ -1,5 +1,4 @@
 export const capturePage = async () => {
-  debugger;
   const { content, title } = await (globalThis as any).extension.getPageData({
     removeHiddenElements: true,
     removeUnusedStyles: true,
