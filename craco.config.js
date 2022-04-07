@@ -37,22 +37,22 @@ module.exports = {
             patterns: [
               { from: 'public/manifest.json', to: '' },
               { from: 'public/icons', to: 'icons' },
-              { from: 'node_modules/single-file/lib/web', to: 'web' },
+              { from: 'node_modules/single-file/lib/web', to: 'lib/web' },
               {
                 from: 'node_modules/single-file/lib/chrome-browser-polyfill.js',
-                to: 'web',
+                to: 'lib',
               },
               {
                 from: 'node_modules/single-file/lib/single-file-bootstrap.js',
-                to: 'web',
+                to: 'lib',
               },
               {
                 from: 'node_modules/single-file/lib/extension-core.js',
-                to: 'web',
+                to: 'lib',
               },
               {
                 from: 'node_modules/single-file/lib/single-file.js',
-                to: 'web',
+                to: 'lib',
               },
             ],
           }),
