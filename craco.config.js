@@ -10,19 +10,6 @@ module.exports = {
           main: './src/scripts/background/main/index.ts',
           // copying files outside of main bundle
           ['show-capturer']: './src/scripts/content/show-capturer/index.ts',
-          ['chrome-browser-polyfill']:
-            'single-file/lib/chrome-browser-polyfill.js',
-          ['single-file-bootstrap']: 'single-file/lib/single-file-bootstrap.js',
-          ['extension-core']: 'single-file/lib/extension-core.js',
-          ['single-file']: 'single-file/lib/single-file.js',
-          ['hooks-web']: {
-            import: 'single-file/lib/web/hooks/hooks-web.js',
-            filename: 'lib/web/hooks/hooks-web.js',
-          },
-          ['hooks-frames-web']: {
-            import: 'single-file/lib/web/hooks/hooks-frames-web.js',
-            filename: 'lib/web/hooks/hooks-frames-web.js',
-          },
         },
         output: {
           ...webpackConfig.output,
@@ -50,6 +37,23 @@ module.exports = {
             patterns: [
               { from: 'public/manifest.json', to: '' },
               { from: 'public/icons', to: 'icons' },
+              { from: 'node_modules/single-file/lib/web', to: 'web' },
+              {
+                from: 'node_modules/single-file/lib/chrome-browser-polyfill.js',
+                to: 'web',
+              },
+              {
+                from: 'node_modules/single-file/lib/single-file-bootstrap.js',
+                to: 'web',
+              },
+              {
+                from: 'node_modules/single-file/lib/extension-core.js',
+                to: 'web',
+              },
+              {
+                from: 'node_modules/single-file/lib/single-file.js',
+                to: 'web',
+              },
             ],
           }),
         ],

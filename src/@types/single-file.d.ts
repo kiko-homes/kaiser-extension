@@ -1,4 +1,4 @@
-declare module 'single-file/src/single-file' {
+declare module 'single-file/src/extension' {
   interface GetPageDataOptions {
     removeHiddenElements?: boolean;
     removeUnusedStyles?: boolean;

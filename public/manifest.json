@@ -22,6 +22,7 @@
         "lib/chrome-browser-polyfill.js",
         "lib/single-file-bootstrap.js",
         "lib/extension-core.js",
+        "lib/single-file.js",
         "lib/show-capturer.js"
       ],
       "all_frames": false
@@ -31,7 +32,8 @@
     {
       "resources": [
         "lib/web/hooks/hooks-web.js",
-        "lib/web/hooks/hooks-frames-web.js"
+        "lib/web/hooks/hooks-frames-web.js",
+        "lib/web/infobar-web.js"
       ],
       "matches": ["<all_urls>"]
     }
@@ -39,7 +41,8 @@
   "background": {
     "service_worker": "lib/main.js"
   },
-  "permissions": ["tabs", "activeTab"],
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "optional_permissions": ["clipboardWrite", "identity", "bookmarks"],
   "host_permissions": ["<all_urls>"],
   "externally_connectable": {
     "matches": ["*://kaiser-dev.web.app/*", "*://localhost/*", "*://0.0.0.0/*"]

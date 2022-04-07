@@ -1,7 +1,6 @@
-import { getPageData } from 'single-file/src/single-file';
-
 export const capturePage = async () => {
-  const { content, title } = await getPageData({
+  debugger;
+  const { content, title } = await (globalThis as any).extension.getPageData({
     removeHiddenElements: true,
     removeUnusedStyles: true,
     removeUnusedFonts: true,
