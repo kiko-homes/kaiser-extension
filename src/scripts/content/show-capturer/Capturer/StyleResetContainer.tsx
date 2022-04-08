@@ -9,7 +9,7 @@ export const StyleResetContainer = forwardRef<
       {`
             #kaiser-container {
               all: initial;
-              font-size: 16px;
+              font-size: 14px;
             };
           `}
     </style>

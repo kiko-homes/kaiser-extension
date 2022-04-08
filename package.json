@@ -22,6 +22,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.16.1",
+    "react-icons": "^4.3.1",
     "react-scripts": "5.0.0",
     "react-shadow": "^19.0.2",
     "single-file": "git+https://github.com/gildas-lormeau/SingleFile-Lite.git",

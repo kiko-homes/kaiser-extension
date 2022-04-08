@@ -10,8 +10,9 @@ export const Menu = ({ children, ...props }: MenuProps) => {
       flexDirection='row'
       background='white'
       borderRadius='100px'
-      py='12px'
-      px='16px'
+      py='8px'
+      pl='8px'
+      pr='16px'
       alignItems='center'
       sx={{
         '> *:not(:last-child)': {

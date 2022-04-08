@@ -5,3 +5,4 @@ export * from './Box';
 export * from './Button';
 export * from './Select';
 export * from './VerticalSeparator';
+export { Icon } from '@chakra-ui/react';
