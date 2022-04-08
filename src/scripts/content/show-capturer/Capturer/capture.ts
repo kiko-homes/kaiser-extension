@@ -1,17 +1,38 @@
 export const capturePage = async () => {
   const { content, title } = await (globalThis as any).extension.getPageData({
-    removeHiddenElements: true,
-    removeUnusedStyles: true,
-    removeUnusedFonts: true,
-    removeImports: true,
-    removeScripts: true,
     compressHTML: true,
-    removeAudioSrc: true,
-    removeVideoSrc: true,
-    removeAlternativeFonts: true,
+    removeImports: true,
+    removeHiddenElements: true,
+    insertMetaCSP: true,
+    removeFrames: false,
+    blockMixedContent: false,
+    saveOriginalURLs: false,
+    includeInfobar: false,
+    saveRawPage: false,
+
+    removeUnusedStyles: true,
     removeAlternativeMedias: true,
-    removeAlternativeImages: true,
+    compressCSS: false,
+    moveStylesInHead: false,
+
     groupDuplicateImages: true,
+    loadDeferredImages: true,
+    loadDeferredImagesMaxIdleTime: 1500,
+    loadDeferredImagesKeepZoomLevel: false,
+    removeAlternativeImages: true,
+
+    removeUnusedFonts: true,
+    removeAlternativeFonts: true,
+
+    removeScripts: true,
+    removeVideoSrc: true,
+    removeAudioSrc: true,
+
+    defaultEditorMode: 'normal',
+    applySystemTheme: true,
+    warnUnsavedPage: true,
+
+    backgroundSave: true,
   });
 
   return { content, title };
