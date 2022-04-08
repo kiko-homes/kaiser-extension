@@ -16,4 +16,6 @@ export interface SaveHtml {
   projectId?: string;
   title: string;
   html: string;
+  viewportHeight: number;
+  viewportWidth: number;
 }

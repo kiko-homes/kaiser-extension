@@ -3,11 +3,21 @@ import { MessageType, Sender } from 'scripts/common/messages';
 const removeKaiserContent = (rawHtml: string) =>
   rawHtml.replace(/<kaiser-root>[\S\s]*<\/kaiser-root>/, '');
 
-export const saveHtml = (
-  rawHtml: string,
-  title: string,
-  projectId?: string,
-) => {
+interface SaveHtmlOptions {
+  rawHtml: string;
+  title: string;
+  viewportHeight: number;
+  viewportWidth: number;
+  projectId?: string;
+}
+
+export const saveHtml = ({
+  rawHtml,
+  title,
+  projectId,
+  viewportHeight,
+  viewportWidth,
+}: SaveHtmlOptions) => {
   const html = removeKaiserContent(rawHtml);
   chrome.runtime.sendMessage({
     from: Sender.CAPTURER_SCRIPT,
@@ -15,5 +25,7 @@ export const saveHtml = (
     projectId,
     title,
     html,
+    viewportHeight,
+    viewportWidth,
   });
 };

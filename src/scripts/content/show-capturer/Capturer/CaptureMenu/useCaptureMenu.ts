@@ -13,7 +13,15 @@ export const useCaptureMenu = () => {
     setSaving(true);
 
     const { content, title } = await capturePage();
-    saveHtml(content, title, selectedProject?.uid);
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    saveHtml({
+      rawHtml: content,
+      title,
+      projectId: selectedProject?.uid,
+      viewportHeight,
+      viewportWidth,
+    });
 
     setSaving(false);
   };

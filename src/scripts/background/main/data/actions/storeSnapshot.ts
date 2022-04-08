@@ -20,6 +20,8 @@ export const storeSnapshot = async (
   const createSnapshotData = {
     organisationUid,
     name: request.title,
+    viewportHeight: request.viewportHeight,
+    viewportWidth: request.viewportWidth,
     insertedAt: Timestamp.now(),
     updatedAt: Timestamp.now(),
   };
