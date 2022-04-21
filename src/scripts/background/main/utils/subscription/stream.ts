@@ -20,6 +20,7 @@ export const createStream = <M>(
   };
 
   return {
+    subscribers,
     subscribe,
     publish,
   };
