@@ -26,7 +26,7 @@ export const subscribeToOrganisationProjects = (
 
 const getProjectData = async (fullProject: QueryDocumentSnapshot) => {
   const uid = fullProject.id;
-  const { name, slidesCount } = fullProject.data() as ProjectFull;
+  const { name, slidesCount, updatedAt } = fullProject.data() as ProjectFull;
 
-  return { name, uid, slidesCount } as Project;
+  return { name, uid, slidesCount, updatedAt } as Project;
 };

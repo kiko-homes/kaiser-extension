@@ -18,6 +18,7 @@ export const CaptureMenu = () => {
           maxWidth='200px'
           width='200px'
           border='none'
+          value={selectedProject?.uid}
           iconColor={saving ? 'kaiser.gray50' : 'inherit'}
           textColor={saving ? 'kaiser.gray50' : 'inherit'}
           onChange={(e) => selectProject(e.target.value)}
