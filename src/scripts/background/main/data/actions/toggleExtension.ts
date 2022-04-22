@@ -9,5 +9,10 @@ export const toggleExtension = async (tabId: number) => {
 
   await injectScipts(tabId);
 
-  chrome.tabs.sendMessage(tabId, message);
+  return new Promise((resolve, reject) => {
+    chrome.tabs.sendMessage(tabId, message, () => {
+      if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+      else resolve('OK');
+    });
+  });
 };

@@ -1,15 +1,11 @@
 import { toggleExtension } from '../data/actions/toggleExtension';
-import { contentScriptStream } from '../utils/subscription/contentScriptStream';
+import { tabManager } from '../utils/subscription/tabManager';
 
 export const handleTabNavitation = async (
   tabId: number,
   info: chrome.tabs.TabChangeInfo,
 ) => {
-  if (
-    contentScriptStream.subscribers.has(tabId) &&
-    info.status === 'complete'
-  ) {
-    console.log(tabId);
+  if (tabManager.isActive(tabId) && info.status === 'complete') {
     await toggleExtension(tabId);
   }
 };
