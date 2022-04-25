@@ -1,5 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   webpack: {
     configure: (webpackConfig, { env }) => {
@@ -35,7 +37,9 @@ module.exports = {
           ...webpackConfig.plugins,
           new CopyPlugin({
             patterns: [
-              { from: 'public/manifest.json', to: '' },
+              isProd
+                ? { from: 'src/manifest.prod.json', to: 'manifest.json' }
+                : { from: 'src/manifest.json', to: '' },
               { from: 'public/icons', to: 'icons' },
               { from: 'node_modules/single-file/lib/web', to: 'lib/web' },
               {

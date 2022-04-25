@@ -9,15 +9,16 @@ import { Project, ProjectFull } from 'scripts/common/models/project';
 import { db } from '../../utils/firebase/firebase';
 
 export const subscribeToOrganisationProjects = (
-  organisationUid: string,
+  userUid: string,
   callback: (projects: Project[]) => void,
 ) =>
   onSnapshot(
     query(
       collection(db, 'projects'),
-      where('organisationUid', '==', organisationUid),
+      where('editors', 'array-contains', userUid),
     ),
     async (fullProjects) => {
+      console.log(fullProjects);
       const projects = await Promise.all(fullProjects.docs.map(getProjectData));
 
       callback(projects);

@@ -38,7 +38,8 @@
     "lint": "eslint",
     "lint:fix": "yarn lint --fix",
     "cm": "cz",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "build:all": "NODE_ENV=production yarn build && zip -r kaiser-prod.zip build && yarn build && zip -r kaiser-dev.zip build"
   },
   "browserslist": {
     "production": [
