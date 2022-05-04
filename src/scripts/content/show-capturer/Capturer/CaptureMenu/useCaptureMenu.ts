@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { MessageType, Sender } from 'scripts/common/messages';
 
 import { toggleCapturer } from '..';
 import { saveHtml } from '../../data/actions/saveHtml';
@@ -27,7 +28,11 @@ export const useCaptureMenu = () => {
   };
 
   const close = () => {
-    toggleCapturer();
+    chrome.runtime.sendMessage({
+      from: Sender.CAPTURER_SCRIPT,
+      type: MessageType.ON_CAPTURER_CLOSED,
+    });
+    toggleCapturer(false);
   };
 
   return { saving, capture, close, projects, selectedProject, selectProject };

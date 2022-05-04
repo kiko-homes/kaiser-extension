@@ -18,7 +18,6 @@ export const subscribeToOrganisationProjects = (
       where('editors', 'array-contains', userUid),
     ),
     async (fullProjects) => {
-      console.log(fullProjects);
       const projects = await Promise.all(fullProjects.docs.map(getProjectData));
 
       callback(projects);

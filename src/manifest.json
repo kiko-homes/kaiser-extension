@@ -41,7 +41,7 @@
   "background": {
     "service_worker": "lib/main.js"
   },
-  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting"],
   "optional_permissions": ["clipboardWrite", "identity", "bookmarks"],
   "host_permissions": ["<all_urls>"],
   "externally_connectable": {

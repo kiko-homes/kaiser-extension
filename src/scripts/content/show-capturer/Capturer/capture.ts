@@ -1,4 +1,5 @@
 export const capturePage = async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { content, title } = await (globalThis as any).extension.getPageData({
     compressHTML: true,
     removeImports: true,

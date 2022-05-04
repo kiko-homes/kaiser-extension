@@ -6,6 +6,6 @@ export const handleTabNavitation = async (
   info: chrome.tabs.TabChangeInfo,
 ) => {
   if (tabManager.isActive(tabId) && info.status === 'complete') {
-    await toggleExtension(tabId);
+    await toggleExtension(tabId, true);
   }
 };

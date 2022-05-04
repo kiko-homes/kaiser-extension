@@ -5,10 +5,13 @@ export type ContentToBackgroundMessage = ContentToBackgroundPayload & {
   from: Sender.CAPTURER_SCRIPT;
 };
 
-type ContentToBackgroundPayload = SubscribeToData | SaveHtml;
+type ContentToBackgroundPayload = SubscribeToData | SaveHtml | OnCapturerClosed;
 
 export interface SubscribeToData {
   type: MessageType.SUBSCRIBE_TO_DATA;
+}
+export interface OnCapturerClosed {
+  type: MessageType.ON_CAPTURER_CLOSED;
 }
 
 export interface SaveHtml {

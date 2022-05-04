@@ -13,6 +13,7 @@ type BackgroundToContentPayload =
 
 export interface ToggleCapturer {
   type: MessageType.TOGGLE_CAPTURER;
+  show: boolean;
 }
 
 export interface ExtensionData {
