@@ -1,6 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
+const isProdTest = process.env.NODE_ENV === 'production-test';
 
 module.exports = {
   webpack: {
@@ -39,7 +40,9 @@ module.exports = {
             patterns: [
               isProd
                 ? { from: 'src/manifest.prod.json', to: 'manifest.json' }
-                : { from: 'src/manifest.json', to: '' },
+                : isProdTest
+                ? { from: 'src/manifest.prod-test.json', to: 'manifest.json' }
+                : { from: 'src/manifest.dev.json', to: 'manifest.json' },
               { from: 'public/icons', to: 'icons' },
               { from: 'node_modules/single-file/lib/web', to: 'lib/web' },
               {
@@ -56,6 +59,14 @@ module.exports = {
               },
               {
                 from: 'node_modules/single-file/lib/single-file.js',
+                to: 'lib',
+              },
+              {
+                from: 'node_modules/single-file/lib/single-file-frames.js',
+                to: 'lib',
+              },
+              {
+                from: 'node_modules/single-file/lib/extension-frames.js',
                 to: 'lib',
               },
             ],

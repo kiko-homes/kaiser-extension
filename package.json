@@ -39,9 +39,10 @@
     "lint:fix": "yarn lint --fix",
     "cm": "cz",
     "postinstall": "husky install",
-    "build:prod": "NODE_ENV=production yarn build && zip -r kaiser-prod.zip build",
-    "build:dev": "yarn build && zip -r kaiser-dev.zip build",
-    "build:all": "yarn build:prod && yarn build:dev"
+    "build:prod": "rm kaiser.zip && NODE_ENV=production yarn build && zip -r kaiser.zip build",
+    "build:prod:test": "rm kaiser-prod.zip && NODE_ENV=production-test yarn build && zip -r kaiser-prod.zip build",
+    "build:dev": "rm kaiser-dev.zip && yarn build && zip -r kaiser-dev.zip build",
+    "build:test": "yarn build:prod:test && yarn build:dev"
   },
   "browserslist": {
     "production": [

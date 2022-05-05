@@ -3,6 +3,7 @@ import { Timestamp } from 'firebase/firestore';
 export interface Project {
   uid: string;
   name: string;
+  organisationUid: string;
   slidesCount: number;
   updatedAt: Timestamp;
 }

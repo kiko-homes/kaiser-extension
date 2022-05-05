@@ -1,3 +1,4 @@
+import 'single-file/lib/single-file-background.js';
 import { streamAppData } from './data/queries/streamAppData';
 import { streamAuthUpdates } from './data/queries/streamAuthUpdates';
 import { auth } from './utils/firebase/firebase';
