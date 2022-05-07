@@ -1,0 +1,83 @@
+name: Build dev and prod test extensions
+'on': pull_request
+jobs:
+  install:
+    name: Add Licenses
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Use Yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn
+  
+  add_licenses:
+    name: Add Licenses
+    runs-on: ubuntu-latest
+    needs: install
+    permissions:
+      content: write
+    steps:
+      - name: Check License Header
+        uses: apache/skywalking-eyes@main
+          with:
+            mode: fix
+      - name: Apply Changes
+        uses: EndBug/add-and-commit@v4
+          with:
+            author_name: License Bot
+            author_email: license_bot@github.com
+            message: 'Automatic application of license header'
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  build_extension:
+    name: Build extension
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    runs-on: ubuntu-latest
+    needs: [install, add_licenses]
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+    strategy:
+      matrix:
+        env: [dev, prod]
+    environment:
+      name: ${{ matrix.env }}
+    steps:
+      - name: Build
+        run: yarn build
+        env:
+          INLINE_RUNTIME_CHUNK: false
+          REACT_APP_APP_HOST: '${{ secrets.FIREBASE_APP_ID }}'
+          REACT_APP_FIREBASE_APP_ID: '${{ secrets.FIREBASE_APP_ID }}'
+          REACT_APP_FIREBASE_API_KEY: '${{ secrets.FIREBASE_API_KEY }}'
+          REACT_APP_FIREBASE_AUTH_DOMAIN: '${{ secrets.FIREBASE_AUTH_DOMAIN }}'
+          REACT_APP_FIREBASE_PROJECT_ID: '${{ secrets.FIREBASE_PROJECT_ID }}'
+          REACT_APP_FIREBASE_MEASUREMENT_ID: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'
+          REACT_APP_FIREBASE_STORAGE_BUCKET: '${{ secrets.FIREBASE_STORAGE_BUCKET }}'
+      - name: Copy manifest
+        run: cp ./src/manifest.${{ matrix.env }}.json ./build/manifest.json
+      - name: Package build
+        run: zip -r kaiser-${{ matrix.env }}.zip build
