@@ -1,0 +1,12 @@
+header:
+  license:
+    spdx-id: AGPL-3.0-or-later
+    copyright-owner: Anton Popov
+
+  paths:
+    - 'src/**/*.ts'
+    - 'src/**/*.tsx'
+
+  dependency:
+    files:
+      - package.json
