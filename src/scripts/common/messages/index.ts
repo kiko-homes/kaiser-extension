@@ -8,4 +8,4 @@ export type ChromeMessage =
   | BackgroundToContentMessage
   | ContentToBackgroundMessage;
 
-export type Respond = (response?: any) => void;
+export type Respond = (response?: unknown) => void;

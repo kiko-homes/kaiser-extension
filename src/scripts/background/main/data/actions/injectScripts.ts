@@ -14,6 +14,7 @@ export const injectScipts = async (tabId: number) => {
   const resultData = (
     await chrome.scripting.executeScript({
       target: { tabId },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       func: () => Boolean((globalThis as any).singlefile),
     })
   )[0];

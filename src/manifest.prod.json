@@ -1,0 +1,59 @@
+{
+  "name": "Kaiser website recorder",
+  "version": "1.0.1",
+  "manifest_version": 3,
+  "description": "Capture your website to create stunning live demos",
+  "homepage_url": "https://kaiser-dev.web.app",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Kaiser website recorder"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": [
+        "lib/chrome-browser-polyfill.js",
+        "lib/single-file-frames.js",
+        "lib/extension-frames.js"
+      ],
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": [
+        "lib/chrome-browser-polyfill.js",
+        "lib/single-file-bootstrap.js",
+        "lib/extension-core.js",
+        "lib/single-file.js",
+        "lib/show-capturer.js"
+      ],
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "lib/web/hooks/hooks-web.js",
+        "lib/web/hooks/hooks-frames-web.js",
+        "lib/web/infobar-web.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "lib/main.js"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "externally_connectable": {
+    "matches": ["*://kaiser-dev.web.app/*", "*://localhost/*", "*://0.0.0.0/*"]
+  }
+}

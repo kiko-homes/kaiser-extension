@@ -1,7 +1,7 @@
 import { MessageType, Sender } from 'scripts/common/messages';
 
 const removeKaiserContent = (rawHtml: string) =>
-  rawHtml.replace(/<kaiser-root>[\S\s]*<\/kaiser-root>/, '');
+  rawHtml.replace(/<kaiser-root[\S\s]*<\/kaiser-root>/, '');
 
 interface SaveHtmlOptions {
   rawHtml: string;

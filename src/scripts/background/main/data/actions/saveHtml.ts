@@ -9,12 +9,12 @@ export const saveHtml = async (request: SaveHtml) => {
   const userId = auth.currentUser?.uid;
   if (!userId) return;
 
-  const organisationUid = await getUserOrganisationId(userId);
-
   const thumbnail = await createScreenThumbnail();
+
+  const organisationUid = await getUserOrganisationId(userId);
 
   const snapshot = await storeSnapshot(organisationUid, request, thumbnail);
   if (request.projectId) {
-    await createSnapshotSlide(request.projectId, snapshot);
+    await createSnapshotSlide(request.projectId, snapshot, request, thumbnail);
   }
 };

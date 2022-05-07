@@ -1,8 +1,8 @@
 {
   "name": "Kaiser website recorder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA336Ihu1CbNOq/kmnYzeAkhxm9uz6+1r4TGFcN4mBp0SadD3i8LMNzNwd2MKh8o3ScIt8UXS5nEJXu95QP7yopoQnEDxqSLD4NLx7D+WL+aCBPSpp8TcaHZxhgbARQiyzKpatt2NidegyWs2mgcTCVeNy+ptHAsCmxKXDpljv6Vvjx/b+odC7/Cq+ie6uh2iokBAkM8A98SlC8ouXlBMu1cpb+pxgMQpLd7G1w64NXJ3TQ7Chz+JluWsoveB+Tsa/Px2HlYIerkcn4F9Sfgr7aGph3YtZFVQybU827v3k4TZVDzi7wuMb7eG+nbzN3kyUSyTaDmL1l3KDhR+CXh+pVwIDAQAB",
+  "key": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDEw/5RuX1VPp0K9EOq+Kvuo/2K53o0QQNqc1lyFKhuJEm6uIlzQMsCsgGbsJx0O06hk7BfYiaYZOfKVPq06Y2/H5DE/FOsL+KQky7Y3I84vRPoo8sOxrsMcVNxvuWyGWpTUrerYV+KrHSUsF2d2yPC8UFZ3pL9uODiGhrhXoUSChRo0nPqIgUm4Qo3jwzy/F5jRnDfj3yi3WnO23649ve0qBHcFIXchkjBMW/BuLZcQ+qRxg8K8zrDqyLhgucGJGlrRDk9Ul+YrIvIjRvCB9TETjYnm5ZFVcg5RSSYjCo06+8ikzKutFmQ6uT/WNKqLygJzwDtX0JqGp1KQA+iJi4J",
   "description": "Capture your website to create stunning live demos",
   "homepage_url": "https://kaiser-dev.web.app",
   "icons": {
@@ -15,6 +15,17 @@
     "default_title": "Kaiser website recorder"
   },
   "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": [
+        "lib/chrome-browser-polyfill.js",
+        "lib/single-file-frames.js",
+        "lib/extension-frames.js"
+      ],
+      "all_frames": true,
+      "match_about_blank": true
+    },
     {
       "matches": ["<all_urls>"],
       "run_at": "document_start",
@@ -41,8 +52,7 @@
   "background": {
     "service_worker": "lib/main.js"
   },
-  "permissions": ["storage", "tabs", "activeTab", "scripting"],
-  "optional_permissions": ["clipboardWrite", "identity", "bookmarks"],
+  "permissions": ["activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],
   "externally_connectable": {
     "matches": ["*://kaiser-dev.web.app/*", "*://localhost/*", "*://0.0.0.0/*"]

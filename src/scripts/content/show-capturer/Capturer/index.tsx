@@ -17,8 +17,10 @@ const renderCapturer = () => {
 
   container.attachShadow({ mode: 'open' });
 
+  if (!container.shadowRoot) return;
+
   ReactDOM.render(
-    <Capturer rootEl={container.shadowRoot as any} />,
+    <Capturer rootEl={container.shadowRoot.host as HTMLElement} />,
     container.shadowRoot,
   );
 };
@@ -28,21 +30,21 @@ const containerExists = (): boolean => {
   return !!container;
 };
 
-const toggleCapturerVisibility = () => {
+const toggleCapturerVisibility = (show: boolean) => {
   const container = document.getElementsByTagName(
     CONTAINER_TAG,
   )[0] as HTMLElement;
 
   if (!container) return;
 
-  if (container.style.display === 'none') {
+  if (show) {
     container.style.display = 'block';
   } else {
     container.style.display = 'none';
   }
 };
 
-export const toggleCapturer = () => {
+export const toggleCapturer = (show: boolean) => {
   if (!containerExists()) renderCapturer();
-  else toggleCapturerVisibility();
+  else toggleCapturerVisibility(show);
 };

@@ -53,12 +53,17 @@ const resizeImage = (dataURL: string) =>
 
 // calling the captureVisibleTab method takes a screenhot
 const captureScreen = () =>
-  new Promise<string>((resolve) => {
+  new Promise<string>((resolve, reject) => {
     // you can have two image formats (jpeg and png)
     // for jpeg use { format: "jpeg", quality: 100 } (you can adjust the jpeg image quality from 0-100)
     // for png use { format: "png" }
-    chrome.tabs.captureVisibleTab({ format: 'jpeg', quality: 100 }, (dataUrl) =>
-      resolve(dataUrl),
+    chrome.tabs.captureVisibleTab(
+      { format: 'jpeg', quality: 100 },
+      (dataUrl) => {
+        // Browser was closed before capture
+        if (!dataUrl) return reject('Browser screen closed');
+        resolve(dataUrl);
+      },
     );
   });
 

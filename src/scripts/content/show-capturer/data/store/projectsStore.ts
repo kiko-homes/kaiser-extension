@@ -1,6 +1,7 @@
 import create from 'zustand/vanilla';
 import createHook from 'zustand';
 import { Project } from 'scripts/common/models/project';
+import { findMostRecent } from 'scripts/utils/helpers';
 
 const projects = create<{
   projects: Project[];
@@ -24,7 +25,7 @@ export const setProjects = (projects: Project[]) =>
     projects,
     selectedProject:
       projects.find(({ uid }) => uid === getState().selectedProject?.uid) ??
-      projects[0],
+      findMostRecent(projects),
   });
 
 export const useProjects = createHook(projects);

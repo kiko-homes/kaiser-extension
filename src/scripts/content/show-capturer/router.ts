@@ -9,7 +9,8 @@ import { setLoggedIn } from './data/store/loggedInStore';
 import { setProjects } from './data/store/projectsStore';
 
 export const routeMessage = async (message: BackgroundToContentMessage) => {
-  if (message.type === MessageType.TOGGLE_CAPTURER) toggleCapturer();
+  if (message.type === MessageType.TOGGLE_CAPTURER)
+    toggleCapturer(message.show);
   if (message.type === MessageType.LOG_IN_STATUS)
     setLoggedIn((message as LoggedInStatus).loggedIn);
   if (message.type === MessageType.EXTENSION_DATA)

@@ -1,15 +1,9 @@
-import { ChromeMessage, MessageType, Sender } from 'scripts/common/messages';
-import { injectScipts } from '../data/actions/injectScripts';
+import { toggleExtension } from '../data/actions/toggleExtension';
+import { tabManager } from '../utils/subscription/tabManager';
 
 export const handleExtensionClick = async (tab: chrome.tabs.Tab) => {
   if (!chrome.tabs || !tab.id) return;
 
-  const message: ChromeMessage = {
-    from: Sender.MAIN_EXTENSION,
-    type: MessageType.TOGGLE_CAPTURER,
-  };
-
-  await injectScipts(tab.id);
-
-  chrome.tabs.sendMessage(tab.id, message);
+  const isActive = tabManager.toggleActive(tab.id);
+  await toggleExtension(tab.id, !isActive);
 };
