@@ -1,8 +1,8 @@
 {
-  "name": "Kaiser website recorder",
+  "name": "Kaiser - Interactive Product Demos",
   "version": "1.0.3",
   "manifest_version": 3,
-  "description": "Capture your website to create stunning live demos",
+  "description": "Win more business with interactive sales demos - no coding needed.",
   "homepage_url": "https://app.getkaiser.com",
   "icons": {
     "16": "icons/icon16.png",
