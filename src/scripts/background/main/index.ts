@@ -6,6 +6,10 @@ import { handleContentScriptMessages } from './handlers/handleContentScriptMessa
 import { handleExtensionClick } from './handlers/handleExtensionClick';
 import { handleExternalMessages } from './handlers/handleExternalMessages';
 import { handleTabNavitation } from './handlers/handleTabNavitation';
+import { handleExtensionInstall } from './handlers/handleExtensionInstall';
+
+/** Installation handler */
+chrome.runtime.onInstalled.addListener(handleExtensionInstall);
 
 /** User interactions */
 chrome.action.onClicked.addListener(handleExtensionClick);
