@@ -1,6 +1,6 @@
 {
   "name": "kaiser-extension",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.8.6",
@@ -39,7 +39,7 @@
     "lint:fix": "yarn lint --fix",
     "cm": "cz",
     "postinstall": "husky install",
-    "build:prod": "rm kaiser.zip ; NODE_ENV=development yarn build && zip -r kaiser.zip build",
+    "build:prod": "rm kaiser.zip ; NODE_ENV=production yarn build && zip -r kaiser.zip build",
     "build:prod:test": "rm kaiser-prod.zip ; NODE_ENV=production-test yarn build && zip -r kaiser-prod.zip build",
     "build:dev": "rm kaiser-dev.zip ; NODE_ENV=development yarn build && zip -r kaiser-dev.zip build",
     "build:test": "yarn build:prod:test && yarn build:dev"
